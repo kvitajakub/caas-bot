@@ -3,14 +3,18 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'dotenv'
 Dotenv.load
 
-require 'slack-mathbot'
+require 'slack-ruby-bot'
+require 'caas-bot/bot'
 require 'web'
+require 'json'
+
+SlackRubyBot::Client.logger.level = Logger::INFO
 
 Thread.abort_on_exception = true
 
 Thread.new do
   begin
-    SlackMathbot::Bot.run
+    CaaSBot::Bot.run
   rescue Exception => e
     STDERR.puts "ERROR: #{e}"
     STDERR.puts e.backtrace
@@ -18,4 +22,4 @@ Thread.new do
   end
 end
 
-run SlackMathbot::Web
+run CaaSBot::Web

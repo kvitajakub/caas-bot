@@ -1,12 +1,9 @@
 require 'sinatra/base'
 
-module SlackMathbot
+module CaaSBot
   class Web < Sinatra::Base
-    before do
-      logger.level = 0
-    end
     get '/' do
-      'Math is good for you.'
+      'Supporting CaaS on #devsupport.'
     end
   end
 end
